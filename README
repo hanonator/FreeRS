@@ -1,0 +1,97 @@
+You walk around the (f2p accessible) world of the runescape world, looking for supplies
+to survive the wilderness.
+
+- Day in the life of Mystic Flow
+	- Skills, inventory, energy, ... everything is reset upon death
+	- No banks, no shops, no help ... every man for himself
+	- If you should disconnect, you have a 2 minute grace period to reconnect
+	or you will lose all progress.
+	- Logging out during combat will keep your character logged in, even
+	if you are fighting AI.
+
+- Energy
+	- The food system is altered so that food no longer heals you but replenishes
+	your energy.
+	- If you are under 25% health, running will be disabled
+	- If your energy reaches 0%, your health will slowly start to drain. Find food
+	or fluids fast to replenish your energy or you will die.
+	- The lower your energy, the less damage you will inflict. At 0% energy, your
+	effective strength will be halved.
+	- At 75% energy or above, your health will replenish itself so bandages are
+	no longer needed.
+
+- Bandages
+	- Bandages are the only way to heal yourself if you are hurt. You get 5
+	bandages when you spawn in and are dropped by zombies or found in crates
+	near villages. 
+	- Bandages heal 25% of your health.
+	- You can use bandages on other players to heal them
+
+- Skills
+	- Skills are based on their runescape equivalent with minor changes
+	to boost/nerf some aspects if necessary such as multiple ores from
+	rocks
+	
+- Tools
+	- No starting tools
+	- Tools found as drops from monsters or crates. some tools are spawned
+	on predefined locations
+
+- Loot
+	- All AI will have the same basic drop table consisting of bandages,
+	food, munition, runes, bronze weaponry, etc. and a different table
+	specific to the type of monster
+	- The first drop table is all an uncommon drop whereas the monster-specific
+	table's rarity depends on the monster being killed
+	- All loot is global, so you can steal other player's loot as soon as the
+	monster is downed.
+
+- Experience
+	- All non-combat skill experience is dealt as its runescape equivalent
+	- Combat experience is earned upon kill. Full experience is given to the
+	players who have attacked the monster and is still close by.
+
+
+- PvP
+	- Enabled throughout the whole world.
+	- There is a 2 minute spawn protection for people who have just spawned into
+	the game or who have respawned due to dying.
+	- Spawn protection also makes sure the zombies do not attack.
+	- Spawn protection removed when player engages in combat
+
+- Monsters
+	- Zombies are more frequently found near a city and will have a lower combat
+	level depending on how far away they are from cities.
+	- Zombies rarely drop items to motivate the player to explore the map
+
+- Buddy system
+	- Buddy system allows you to teleport to players in your friends list if the targeted
+	player accepts your teleport request.
+
+- Combat
+- A lot of changes to combat to make the game more fair, and it shouldn't
+matter as this isn't a runescape emulation but rather a game mod using
+the runescape engine
+	- Magic delays on spells to counteract "combos"
+	- Energy affects maximum hit
+	- Range will be buffed
+	- Cannot engage in unarmed combat
+	- There is no arrow dropping
+	- Some special attacks will be altered/buffed
+
+- Player channels
+	- Commands have been replaced by player channels
+	- Player is automatically assigned to the default channel
+	- ::create #channel_name
+	- ::leave #channel_name
+	- ::join #channel_name
+	- ::ignore #player_name
+	- ::unignore #player_name
+
+Server revision: 317
+
+Technical details
+- All your preferences and settings will be saved, your character not.
+- Only registered accounts are able to play
+- No more than 2 connections per IP
+- Usercap is 75
