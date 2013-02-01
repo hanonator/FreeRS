@@ -1,5 +1,11 @@
 package org.hannes.rs2.util;
 
+import java.io.IOException;
+import java.io.RandomAccessFile;
+import java.nio.ByteBuffer;
+import java.nio.channels.FileChannel.MapMode;
+import java.util.logging.Logger;
+
 
 /**
  * TODO: This is hyperion and has to go ASAP, but I'm using it cuz I'm lazy
@@ -27,6 +33,58 @@ public class ItemDefinition {
 		return id >= 0 && id < definitions.length ? definitions[id] : DEFAULT_DEFINITION;
 	}
 	
+	/**
+	 * The logger
+	 */
+	private static final Logger logger = Logger.getLogger(ItemDefinition.class.getName());
+
+	/**
+	 * Loads the item definitions.
+	 * @throws IOException if an I/O error occurs.
+	 * @throws IllegalStateException if the definitions have been loaded already.
+	 */
+	public static void init() throws IOException {
+		if(definitions != null) {
+			throw new IllegalStateException("Definitions already loaded.");
+		}
+		logger.info("Loading definitions...");
+		RandomAccessFile raf = new RandomAccessFile("data/itemDefinitions.bin", "r");
+		try {
+			ByteBuffer buffer = raf.getChannel().map(MapMode.READ_ONLY, 0, raf.length());
+			int count = buffer.getShort() & 0xFFFF;
+			definitions = new ItemDefinition[count];
+			for(int i = 0; i < count; i++) {
+				String name = readString(buffer);
+				String examine = readString(buffer);
+				boolean noted = buffer.get() == 1 ? true : false;
+				int parentId = buffer.getShort() & 0xFFFF;
+				if(parentId == 65535) {
+					parentId = -1;
+				}
+				boolean noteable = buffer.get() == 1 ? true : false;
+				int notedId = buffer.getShort() & 0xFFFF;
+				if(notedId == 65535) {
+					notedId = -1;
+				}
+				boolean stackable = buffer.get() == 1 ? true : false;
+				boolean members = buffer.get() == 1 ? true : false;
+				boolean prices = buffer.get() == 1 ? true : false;
+				int shop = -1;
+				int highAlc = -1;
+				int lowAlc = -1;
+				if(prices) {
+					shop = buffer.getInt();
+					highAlc = (int) (shop * 0.6D);
+					lowAlc = (int) (shop * 0.4D);
+				}
+				definitions[i] = new ItemDefinition(i, name, examine, noted, noteable, stackable, parentId, notedId, members, shop, highAlc, lowAlc);
+			}
+			logger.info("Loaded " + definitions.length + " definitions.");
+		} finally {
+			raf.close();
+		}
+	}
+
 	/**
 	 * Id.
 	 */
@@ -127,6 +185,31 @@ public class ItemDefinition {
 	 */
 	private final boolean twoHanded;
 	
+	public ItemDefinition(int id, String name, String examine, boolean noted,
+			boolean noteable, boolean stackable, int parentId, int notedId,
+			boolean members, int shop, int highAlc, int lowAlc) {
+		this.id = id;
+		this.name = name;
+		this.examine = examine;
+		this.noted = noted;
+		this.noteable = noteable;
+		this.stackable = stackable;
+		this.parentId = parentId;
+		this.notedId = notedId;
+		this.members = members;
+		this.shopValue = shop;
+		this.highAlcValue = highAlc;
+		this.lowAlcValue = lowAlc;
+		this.defenceBonus = new int[5];
+		this.attackBonus = new int[5];
+		this.rangeStrength = 0;
+		this.strength = 0;
+		this.prayer = 0;
+		this.mask = 0;
+		this.setEquipmentSlot(0);
+		this.twoHanded = false;
+	}
+	
 	/**
 	 * Creates the item definition.
 	 * @param id The id.
@@ -164,7 +247,7 @@ public class ItemDefinition {
 		this.setEquipmentSlot(equipmentSlot);
 		this.twoHanded = twoHanded;
 	}
-	
+
 	/**
 	 * Gets the id.
 	 * @return The id.
@@ -342,6 +425,18 @@ public class ItemDefinition {
 
 	public void setEquipmentSlot(int equipmentSlot) {
 		this.equipmentSlot = equipmentSlot;
+	}
+
+	private static String readString(ByteBuffer buffer) {
+		StringBuilder bldr = new StringBuilder();
+		while(buffer.hasRemaining()) {
+			byte b = buffer.get();
+			if(b == 0) {
+				break;
+			}
+			bldr.append((char) b);
+		}
+		return bldr.toString();
 	}
 
 }

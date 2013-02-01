@@ -66,7 +66,6 @@ public class MovementDecoder implements Decoder {
 		 * between the request and the client
 		 */
 		player.getWalkingQueue().finish();
-		System.out.println(":)");
 	}
 
 }

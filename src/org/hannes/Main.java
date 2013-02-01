@@ -10,6 +10,7 @@ import org.hannes.rs2.event.EventHub;
 import org.hannes.rs2.net.RS2PipelineFactory;
 import org.hannes.rs2.tasks.ConnectionFlushTask;
 import org.hannes.rs2.tasks.EntitySynchronizationTask;
+import org.hannes.rs2.util.ItemDefinition;
 import org.hannes.rs2.util.WeaponInterface;
 import org.hannes.util.GameEngine;
 import org.jboss.netty.bootstrap.ServerBootstrap;
@@ -55,6 +56,7 @@ public class Main {
 		 * Initialize the content
 		 * TODO: No hardcode pls
 		 */
+		ItemDefinition.init();
 		WeaponInterface.initialize(reader.read(new File("data/weapon-interfaces.xml")));
 		
 		/*
