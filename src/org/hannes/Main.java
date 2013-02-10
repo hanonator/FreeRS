@@ -6,6 +6,7 @@ import java.util.concurrent.Executors;
 import java.util.logging.Logger;
 
 import org.dom4j.io.SAXReader;
+import org.hannes.rs2.World;
 import org.hannes.rs2.event.EventHub;
 import org.hannes.rs2.net.RS2PipelineFactory;
 import org.hannes.rs2.tasks.ConnectionFlushTask;
@@ -43,20 +44,21 @@ public class Main {
 		engine.submit(new ConnectionFlushTask());
 		
 		/*
-		 * Initialize the event hub
-		 */
-		eventHub.initialize();
-		
-		/*
 		 * Create a new SAX reader
 		 */
 		SAXReader reader = new SAXReader();
+		
+		/*
+		 * Initialize the event hub
+		 */
+		eventHub.initialize(reader.read("event-handlers.xml"));
 		
 		/*
 		 * Initialize the content
 		 * TODO: No hardcode pls
 		 */
 		ItemDefinition.init();
+		World.getWorld().initialize(reader.read("data/spawn-areas.xml"));
 		WeaponInterface.initialize(reader.read(new File("data/weapon-interfaces.xml")));
 		
 		/*

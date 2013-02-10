@@ -1,0 +1,7 @@
+<event-handlers>
+	<!-- misc handlers -->
+	<handler class="org.hannes.rs2.content.event.SpawnEvent">org.hannes.rs2.content.SpawnEventHandler</handler>
+	<handler class="org.hannes.rs2.content.event.RegisterEvent">org.hannes.rs2.content.RegisterEventHandler</handler>
+	
+	
+</event-handlers>

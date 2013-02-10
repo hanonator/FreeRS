@@ -21,8 +21,9 @@ to survive the wilderness.
 	no longer needed.
 
 - Bandages
-	- Bandages are the only way to heal yourself if you are hurt. You get 5
-	bandages when you spawn in and are dropped by zombies or found in crates
+	- Bandages are the only way to heal yourself if you are hurt other
+	than prayer. You get 5 bandages when you spawn in and are dropped
+	by zombies or found in crates
 	near villages. 
 	- Bandages heal 25% of your health.
 	- You can use bandages on other players to heal them
@@ -63,6 +64,9 @@ to survive the wilderness.
 	- Zombies are more frequently found near a city and will have a lower combat
 	level depending on how far away they are from cities.
 	- Zombies rarely drop items to motivate the player to explore the map
+	- Some zombies will use range or magic projectiles on the players
+	- Low and mid tier monsters found above ground, high tier found together
+	with low and mid tier in dungeons and sewers.
 
 - Buddy system
 	- Buddy system allows you to teleport to players in your friends list if the targeted

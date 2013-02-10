@@ -1,13 +1,25 @@
 package org.hannes.rs2;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Random;
 
+import org.dom4j.Document;
+import org.dom4j.Element;
 import org.hannes.rs2.entity.NPC;
 import org.hannes.rs2.entity.Player;
 import org.hannes.rs2.net.Connection;
 import org.hannes.rs2.util.EntityList;
+import org.hannes.rs2.util.SpawnArea;
+import org.hannes.util.Location;
 
 public class World {
+
+	/**
+	 * The random generator for generating randoms lol
+	 */
+	private static final Random RANDOM_GENERATOR = new Random();
 
 	/**
 	 * The global user cap
@@ -28,6 +40,11 @@ public class World {
 	 * The player list
 	 */
 	private final List<NPC> npcs = new EntityList<>(2048);
+	
+	/**
+	 * The spawn areas
+	 */
+	private final List<SpawnArea> areas = new ArrayList<>();
 
 	/**
 	 * destroys the player object
@@ -88,6 +105,53 @@ public class World {
 			throw new IllegalStateException("cannot register npc");
 		}
 		npcs.add(npc);
+	}
+
+	/**
+	 * Initializes the wandering NPC spawns
+	 * 
+	 * @throws Exception
+	 */
+	public void initialize(Document document) throws Exception {
+		/*
+		 * Parse all packet information
+		 */
+		for (Iterator<Element> iterator = document.getRootElement().elements().iterator(); iterator.hasNext(); ) {
+			Element element = iterator.next();
+			
+			/*
+			 * Get the radius in the document
+			 */
+			int radius = Integer.valueOf(element.elementText("radius"));
+			
+			/*
+			 * 
+			 */
+			Element location = element.element("center");
+			int x = Integer.valueOf(location.elementText("x"));
+			int y = Integer.valueOf(location.elementText("y"));
+			
+			/*
+			 * Add the spawn area
+			 */
+			areas.add(new SpawnArea(new Location(x, y), radius));
+		}
+		
+		/*
+		 * Spawn the monsters
+		 */
+		for (SpawnArea area : areas) {
+			for (int i = 0; i < 50; i++) {
+				NPC npc = World.getWorld().allocateNPC();
+				npc.setType(1);
+				
+				int x = area.getCenter().getX() + RANDOM_GENERATOR.nextInt(area.getRadius() * 2) - area.getRadius();
+				int y = area.getCenter().getY() + RANDOM_GENERATOR.nextInt(area.getRadius() * 2) - area.getRadius();
+				
+				npc.setTeleportTarget(new Location(x, y));
+				World.getWorld().register(npc);
+			}
+		}
 	}
 	
 	public static World getWorld() {

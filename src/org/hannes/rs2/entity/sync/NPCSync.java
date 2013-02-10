@@ -44,7 +44,7 @@ public class NPCSync implements CharacterSync {
 			/*
 			 * 
 			 */
-			if (World.getWorld().getNPCs().contains(npc)) {
+			if (World.getWorld().getNPCs().contains(npc) && npc.distance(player) < 16) {
 				/*
 				 * Update the movement.
 				 */
@@ -89,7 +89,7 @@ public class NPCSync implements CharacterSync {
 			/*
 			 * If they should not be added ignore them.
 			 */
-			if(npc == null || player.getLocalNPCs().contains(npc)) {
+			if(npc == null || player.getLocalNPCs().contains(npc) || npc.distance(player) > 16) {
 				continue;
 			}
 			

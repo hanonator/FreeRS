@@ -1,5 +1,6 @@
 package org.hannes.rs2.entity;
 
+import org.hannes.rs2.action.ActionQueue;
 import org.hannes.rs2.container.impl.Equipment;
 import org.hannes.rs2.container.impl.Inventory;
 import org.hannes.rs2.entity.sync.UpdateFlags.UpdateFlag;
@@ -48,6 +49,11 @@ public class Player extends Character {
 	 * The attack index
 	 */
 	private int attackIndex;
+	
+	/**
+	 * The action queue
+	 */
+	private final ActionQueue actionQueue = new ActionQueue();
 
 	public Player(int index, Connection connection) {
 		super(index);
@@ -110,6 +116,10 @@ public class Player extends Character {
 
 	public void setAttackIndex(int attackIndex) {
 		this.attackIndex = attackIndex;
+	}
+
+	public ActionQueue getActionQueue() {
+		return actionQueue;
 	}
 
 }

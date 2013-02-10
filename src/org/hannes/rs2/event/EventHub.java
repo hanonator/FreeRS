@@ -5,7 +5,10 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Logger;
 
+import org.dom4j.Document;
+import org.dom4j.Element;
 import org.hannes.rs2.content.RegisterEventHandler;
 import org.hannes.rs2.content.SpawnEventHandler;
 import org.hannes.rs2.content.event.RegisterEvent;
@@ -19,6 +22,16 @@ import org.hannes.rs2.content.event.SpawnEvent;
  *
  */
 public class EventHub {
+	
+	/**
+	 * The logger
+	 */
+	private static final Logger logger = Logger.getLogger(EventHub.class.getName());
+	
+	/**
+	 * The system class loader
+	 */
+	private static final ClassLoader classLoader = ClassLoader.getSystemClassLoader();
 
 	/**
 	 * The event handlers
@@ -26,11 +39,28 @@ public class EventHub {
 	private final Map<Class<?>, List<EventHandler<?>>> map = new HashMap<>();
 
 	/**
-	 * Adds the event handlers
+	 * TODO: Holy shit this is bad
+	 * 
+	 * @throws Exception
 	 */
-	public void initialize() {
-		add(SpawnEvent.class, new SpawnEventHandler());
-		add(RegisterEvent.class, new RegisterEventHandler());
+	public void initialize(Document document) throws Exception {
+		/*
+		 * The root element
+		 */
+		Element root = document.getRootElement();
+		
+		/*
+		 * Parse all packet information
+		 */
+		for (Iterator<Element> iterator = root.elementIterator("handler"); iterator.hasNext(); ) {
+			Element element = iterator.next();
+			
+			String className = element.attributeValue("class");
+			String handlerName = element.getText();
+			
+			add((Class<?>) classLoader.loadClass(className), (EventHandler<?>) classLoader.loadClass(handlerName).newInstance());
+			logger.info("eventhandler [" + handlerName + "] added for " + className);
+		}
 	}
 
 	/**

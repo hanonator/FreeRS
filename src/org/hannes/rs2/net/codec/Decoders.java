@@ -9,6 +9,7 @@ import org.hannes.rs2.net.codec.decoder.ButtonDecoder;
 import org.hannes.rs2.net.codec.decoder.EquipmentDecoder;
 import org.hannes.rs2.net.codec.decoder.GlobalChatDecoder;
 import org.hannes.rs2.net.codec.decoder.MovementDecoder;
+import org.hannes.rs2.net.codec.decoder.ObjectInteractionDecoder;
 import org.hannes.rs2.net.codec.decoder.SilentDecoder;
 
 public class Decoders {
@@ -63,6 +64,14 @@ public class Decoders {
 		 * The button decoder
 		 */
 		decoders[185] = new ButtonDecoder();
+		
+		/*
+		 * The object interaction decoders
+		 */
+		ObjectInteractionDecoder object = new ObjectInteractionDecoder();
+		decoders[ObjectInteractionDecoder.FIRST_OPTION] = object;
+		decoders[ObjectInteractionDecoder.SECOND_OPTION] = object;
+		decoders[ObjectInteractionDecoder.THIRD_OPTION] = object;
 	}
 
 	/**

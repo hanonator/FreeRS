@@ -1,0 +1,73 @@
+<list>
+	<!-- Varrock Center -->
+	<spawn-area>
+		<center>
+			<x>3213</x>
+			<y>3425</y>
+		</center>
+		<radius>30</radius>
+	</spawn-area>
+	
+	<!-- Falador West -->
+	<spawn-area>
+		<center>
+			<x>2965</x>
+			<y>3380</y>
+		</center>
+		<radius>30</radius>
+	</spawn-area>
+	
+	<!-- Falador East -->
+		<spawn-area>
+		<center>
+			<x>3012</x>
+			<y>3355</y>
+		</center>
+		<radius>30</radius>
+	</spawn-area>
+	
+	<!-- Lumbridge -->
+		<spawn-area>
+		<center>
+			<x>3222</x>
+			<y>3218</y>
+		</center>
+		<radius>30</radius>
+	</spawn-area>
+	
+	<!-- Draynor -->
+	<spawn-area>
+		<center>
+			<x>3093</x>
+			<y>3244</y>
+		</center>
+		<radius>30</radius>
+	</spawn-area>
+	
+	<!-- Rimmington -->
+	<spawn-area>
+		<center>
+			<x>2957</x>
+			<y>3214</y>
+		</center>
+		<radius>30</radius>
+	</spawn-area>
+	
+	<!-- Al Kharid -->
+	<spawn-area>
+		<center>
+			<x>3293</x>
+			<y>3174</y>
+		</center>
+		<radius>30</radius>
+	</spawn-area>
+	
+	<!-- Barbarian spawn-area -->
+	<spawn-area>
+		<center>
+			<x>3082</x>
+			<y>3420</y>
+		</center>
+		<radius>30</radius>
+	</spawn-area>
+</list>

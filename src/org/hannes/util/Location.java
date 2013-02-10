@@ -12,7 +12,7 @@ public class Location {
 	/**
 	 * The default location at which entities are created
 	 */
-	public static final Location DEFAULT_LOCATION = new Location(3094, 3107, 0);
+	public static final Location DEFAULT_LOCATION = new Location(2957, 3214, 0);
 
 	/**
 	 * The default location at which entities are created

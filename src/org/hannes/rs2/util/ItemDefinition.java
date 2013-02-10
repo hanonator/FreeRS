@@ -48,7 +48,7 @@ public class ItemDefinition {
 			throw new IllegalStateException("Definitions already loaded.");
 		}
 		logger.info("Loading definitions...");
-		RandomAccessFile raf = new RandomAccessFile("data/itemDefinitions.bin", "r");
+		RandomAccessFile raf = new RandomAccessFile("data/item-definitions.bin", "r");
 		try {
 			ByteBuffer buffer = raf.getChannel().map(MapMode.READ_ONLY, 0, raf.length());
 			int count = buffer.getShort() & 0xFFFF;

@@ -1,5 +1,7 @@
 package org.hannes.rs2.entity;
 
+import java.awt.Point;
+
 import org.hannes.util.Location;
 
 public class Entity {
@@ -21,6 +23,14 @@ public class Entity {
 	 */
 	public Entity(int index) {
 		this.index = index;
+	}
+
+	public int distance(Location other) {
+		return (int) Point.distance(location.getX(), location.getY(), other.getX(), other.getY());
+	}
+
+	public int distance(Entity other) {
+		return distance(other.location);
 	}
 
 	public int getIndex() {
