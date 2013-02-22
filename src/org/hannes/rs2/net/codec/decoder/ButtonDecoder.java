@@ -12,6 +12,11 @@ import org.hannes.rs2.net.codec.Decoder;
  * @author red
  */
 public class ButtonDecoder implements Decoder {
+	
+	/**
+	 * The opcode
+	 */
+	public static final int OPCODE = 185;
 
 	@Override
 	public void decode(Message message, Connection connection) throws Exception {

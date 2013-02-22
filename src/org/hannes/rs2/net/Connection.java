@@ -80,7 +80,8 @@ public class Connection {
 	 */
 	public void write(Message msg) {
 		synchronized (out) {
-			out.add(msg);
+			if (msg != null)
+				out.add(msg);
 		}
 	}
 
@@ -89,8 +90,8 @@ public class Connection {
 	 * 
 	 * @param serializable
 	 */
-	public void write(Packet pkt) {
-		write(pkt.build(this));
+	public void write(Serializable pkt) {
+		write(pkt.serialize(this));
 	}
 
 	/**

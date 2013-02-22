@@ -3,7 +3,7 @@ package org.hannes.rs2.net.packets;
 import org.hannes.rs2.net.Connection;
 import org.hannes.rs2.net.Message;
 import org.hannes.rs2.net.MessageBuilder;
-import org.hannes.rs2.net.Packet;
+import org.hannes.rs2.net.Serializable;
 
 /**
  * A sidebar interface is an interface that goes on the left 
@@ -11,7 +11,7 @@ import org.hannes.rs2.net.Packet;
  * 
  * @author red
  */
-public class SidebarInterface implements Packet {
+public class SidebarInterface implements Serializable {
 
 	/**
 	 * The tab index
@@ -28,7 +28,7 @@ public class SidebarInterface implements Packet {
 		this.interfaceId = interfaceId;
 	}
 	@Override
-	public Message build(Connection connection) {
+	public Message serialize(Connection connection) {
 		return new MessageBuilder(71).putShort((short) interfaceId)
 				.put((byte) index).build();
 	}

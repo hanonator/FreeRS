@@ -12,6 +12,21 @@ import org.hannes.util.Location;
  * @author red
  */
 public class MovementDecoder implements Decoder {
+	
+	/**
+	 * The opcode
+	 */
+	public static final int PRIMARY_OPCODE = 98;
+	
+	/**
+	 * The opcode
+	 */
+	public static final int SECONDARY_OPCODE = 164;
+	
+	/**
+	 * The opcode
+	 */
+	public static final int TERNARY_OPCODE = 248;
 
 	@Override
 	public void decode(Message message, Connection connection) throws Exception {
@@ -21,6 +36,11 @@ public class MovementDecoder implements Decoder {
 		 * Get the size of the message
 		 */
 		int size = message.getOpcode() == 248 ? message.size() - 14 : message.size();
+		
+		/*
+		 * Clear the player's action queue n shit
+		 */
+		player.getActionQueue().clear();
 		
 		/*
 		 * Reset the player's walking queue

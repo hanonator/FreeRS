@@ -3,9 +3,9 @@ package org.hannes.rs2.net.packets;
 import org.hannes.rs2.net.Connection;
 import org.hannes.rs2.net.Message;
 import org.hannes.rs2.net.MessageBuilder;
-import org.hannes.rs2.net.Packet;
+import org.hannes.rs2.net.Serializable;
 
-public class ItemModel implements Packet {
+public class ItemModel implements Serializable {
 
 	/**
 	 * The item id
@@ -34,7 +34,7 @@ public class ItemModel implements Packet {
 	}
 
 	@Override
-	public Message build(Connection connection) {
+	public Message serialize(Connection connection) {
 		MessageBuilder bldr = new MessageBuilder(246);
 		bldr.putShort((short) interfaceId);
 		bldr.putShort((short) itemId);

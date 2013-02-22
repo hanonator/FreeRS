@@ -3,6 +3,7 @@ package org.hannes.rs2.entity;
 import org.hannes.rs2.action.ActionQueue;
 import org.hannes.rs2.container.impl.Equipment;
 import org.hannes.rs2.container.impl.Inventory;
+import org.hannes.rs2.content.misc.MakeAction;
 import org.hannes.rs2.entity.sync.UpdateFlags.UpdateFlag;
 import org.hannes.rs2.net.Connection;
 import org.hannes.rs2.util.Animations;
@@ -54,6 +55,11 @@ public class Player extends Character {
 	 * The action queue
 	 */
 	private final ActionQueue actionQueue = new ActionQueue();
+	
+	/**
+	 * The make action
+	 */
+	private MakeAction makeAction;
 
 	public Player(int index, Connection connection) {
 		super(index);
@@ -120,6 +126,14 @@ public class Player extends Character {
 
 	public ActionQueue getActionQueue() {
 		return actionQueue;
+	}
+
+	public MakeAction getMakeAction() {
+		return makeAction;
+	}
+
+	public void setMakeAction(MakeAction makeAction) {
+		this.makeAction = makeAction;
 	}
 
 }

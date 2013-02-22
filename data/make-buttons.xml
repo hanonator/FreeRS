@@ -1,0 +1,34 @@
+<list>
+	<!-- Interface with 3 item slots -->
+	<button amount="1" slot="0">8889</button>
+	<button amount="5" slot="0">8888</button>
+	<button amount="10" slot="0">8887</button>
+	<button amount="-1" slot="0">8886</button>
+	
+	<button amount="1" slot="1">8893</button>
+	<button amount="5" slot="1">8892</button>
+	<button amount="10" slot="1">8891</button>
+	<button amount="-1" slot="1">8890</button>
+	
+	<button amount="1" slot="2">8897</button>
+	<button amount="5" slot="2">8896</button>
+	<button amount="10" slot="2">8895</button>
+	<button amount="-1" slot="2">8894</button>
+	
+	<!-- Interface with 2 item slots -->
+	<button amount="1" slot="0">8874</button>
+	<button amount="5" slot="0">8873</button>
+	<button amount="10" slot="0">8872</button>
+	<button amount="-1" slot="0">8871</button>
+	
+	<button amount="1" slot="1">8878</button>
+	<button amount="5" slot="1">8877</button>
+	<button amount="10" slot="1">8876</button>
+	<button amount="-1" slot="1">8875</button>
+	
+	<!-- Interface with 1 item slot -->
+	<button amount="1" slot="0">2799</button>
+	<button amount="5" slot="0">2798</button>
+	<button amount="-1" slot="0">1748</button>
+	<button amount="28" slot="0">1747</button>
+</list>

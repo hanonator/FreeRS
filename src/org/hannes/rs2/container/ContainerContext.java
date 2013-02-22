@@ -4,9 +4,9 @@ import org.hannes.rs2.net.Connection;
 import org.hannes.rs2.net.Message;
 import org.hannes.rs2.net.MessageBuilder;
 import org.hannes.rs2.net.MessageLength;
-import org.hannes.rs2.net.Packet;
+import org.hannes.rs2.net.Serializable;
 
-public class ContainerContext implements Packet {
+public class ContainerContext implements Serializable {
 
 	/**
 	 * The container
@@ -30,7 +30,7 @@ public class ContainerContext implements Packet {
 	}
 
 	@Override
-	public Message build(Connection connection) {
+	public Message serialize(Connection connection) {
 		Item[] items = container.toArray();
 		
 		MessageBuilder bldr = new MessageBuilder(53, MessageLength.VARIABLE_16_BIT);

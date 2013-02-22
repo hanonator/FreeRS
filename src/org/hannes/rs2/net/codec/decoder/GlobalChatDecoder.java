@@ -16,6 +16,11 @@ import org.hannes.util.Location;
  * @author red
  */
 public class GlobalChatDecoder implements Decoder {
+	
+	/**
+	 * The opcode
+	 */
+	public static final int OPCODE = 103;
 
 	@Override
 	public void decode(Message message, Connection connection) throws Exception {

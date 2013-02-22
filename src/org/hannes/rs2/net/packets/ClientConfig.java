@@ -3,9 +3,9 @@ package org.hannes.rs2.net.packets;
 import org.hannes.rs2.net.Connection;
 import org.hannes.rs2.net.Message;
 import org.hannes.rs2.net.MessageBuilder;
-import org.hannes.rs2.net.Packet;
+import org.hannes.rs2.net.Serializable;
 
-public class ClientConfig implements Packet {
+public class ClientConfig implements Serializable {
 
 	/**
 	 * The value of the configuration setting
@@ -23,7 +23,7 @@ public class ClientConfig implements Packet {
 	}
 
 	@Override
-	public Message build(Connection connection) {
+	public Message serialize(Connection connection) {
 		return value > Byte.MAX_VALUE || value < Byte.MIN_VALUE ?
 				new MessageBuilder(86).putShort((short) key).putInt(value).build() :
 				new MessageBuilder(36).putShort((short) key).put((byte) value).build();

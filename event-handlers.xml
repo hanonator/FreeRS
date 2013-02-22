@@ -3,5 +3,11 @@
 	<handler class="org.hannes.rs2.content.event.SpawnEvent">org.hannes.rs2.content.SpawnEventHandler</handler>
 	<handler class="org.hannes.rs2.content.event.RegisterEvent">org.hannes.rs2.content.RegisterEventHandler</handler>
 	
+	<!-- make handlers -->
+	<handler class="org.hannes.rs2.content.event.UserValueEvent">org.hannes.rs2.content.misc.MakeXEventHandler</handler>
+	<handler class="org.hannes.rs2.content.event.MakeEvent">org.hannes.rs2.content.misc.MakeEventHandler</handler>
+	<handler class="org.hannes.rs2.content.event.ButtonEvent">org.hannes.rs2.content.misc.MakeButtonEventHandler</handler>
 	
+	<!-- skill event handlers -->
+	<handler class="org.hannes.rs2.content.event.ItemOnItemEvent">org.hannes.rs2.content.Herblore</handler>
 </event-handlers>

@@ -14,17 +14,17 @@ public class EquipmentDecoder implements Decoder {
 	/**
 	 * Opcode of the add item packet
 	 */
-	public static final int ADD = 41;
+	public static final int OPCODE_ADD = 41;
 	
 	/**
 	 * Opcode of the remove item packet
 	 */
-	public static final int REMOVE = 145;
+	public static final int OPCODE_REMOVE = 145;
 
 	@Override
 	public void decode(Message message, Connection connection) throws Exception {
 		switch (message.getOpcode()) {
-		case ADD:
+		case OPCODE_ADD:
 			int itemId = message.getShort();
 			int slot = message.getShort();
 			int interfaceId = message.getShort();
@@ -33,7 +33,7 @@ public class EquipmentDecoder implements Decoder {
 				connection.getPlayer().getEquipment().equip(interfaceId, itemId, slot);
 			}
 			break;
-		case REMOVE:
+		case OPCODE_REMOVE:
 			interfaceId = message.getShort();
 			slot = message.getShort();
 			itemId = message.getShort();

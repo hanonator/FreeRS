@@ -7,6 +7,8 @@ import java.util.logging.Logger;
 
 import org.dom4j.io.SAXReader;
 import org.hannes.rs2.World;
+import org.hannes.rs2.content.Herblore;
+import org.hannes.rs2.content.misc.MakeButtonEventHandler;
 import org.hannes.rs2.event.EventHub;
 import org.hannes.rs2.net.RS2PipelineFactory;
 import org.hannes.rs2.tasks.ConnectionFlushTask;
@@ -60,6 +62,12 @@ public class Main {
 		ItemDefinition.init();
 		World.getWorld().initialize(reader.read("data/spawn-areas.xml"));
 		WeaponInterface.initialize(reader.read(new File("data/weapon-interfaces.xml")));
+		MakeButtonEventHandler.initialize(reader.read("data/make-buttons.xml"));
+		
+		/*
+		 * Initialize the content
+		 */
+		Herblore.initialize(reader.read("data/herblore.xml"));
 		
 		/*
 		 * Create the server boostrap

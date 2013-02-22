@@ -29,6 +29,9 @@ to survive the wilderness.
 	- You can use bandages on other players to heal them
 
 - Skills
+	- There are no skill levels
+	- Everything is available to be made
+	- Max health is 100 for every user
 	- Skills are based on their runescape equivalent with minor changes
 	to boost/nerf some aspects if necessary such as multiple ores from
 	rocks
@@ -59,6 +62,7 @@ to survive the wilderness.
 	the game or who have respawned due to dying.
 	- Spawn protection also makes sure the zombies do not attack.
 	- Spawn protection removed when player engages in combat
+	- Maximum hit is calculated per weapon instead of skills
 
 - Monsters
 	- Zombies are more frequently found near a city and will have a lower combat

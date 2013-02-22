@@ -4,7 +4,7 @@ import org.hannes.rs2.net.Connection;
 import org.hannes.rs2.net.Message;
 import org.hannes.rs2.net.MessageBuilder;
 import org.hannes.rs2.net.MessageLength;
-import org.hannes.rs2.net.Packet;
+import org.hannes.rs2.net.Serializable;
 
 /**
  * Interface labels
@@ -12,7 +12,7 @@ import org.hannes.rs2.net.Packet;
  * @author red
  *
  */
-public class Label implements Packet {
+public class Label implements Serializable {
 
 	/**
 	 * The index
@@ -34,7 +34,7 @@ public class Label implements Packet {
 	}
 
 	@Override
-	public Message build(Connection connection) {
+	public Message serialize(Connection connection) {
 		return new MessageBuilder(126, MessageLength.VARIABLE_16_BIT)
 				.putString(text).putShort((short) index).build();
 	}
