@@ -1,5 +1,6 @@
 package org.hannes.util;
 
+import org.hannes.rs2.entity.Character;
 
 /**
  * Representin' dem locations
@@ -63,6 +64,26 @@ public class Location {
 	 */
 	public Location(int x, int y) {
 		this (x, y, 0);
+	}
+
+	/**
+	 * Localizes the location
+	 * 
+	 * @param character
+	 */
+	public void localize(Character character) {
+		x -= (character.getLastUpdatedRegion().getX() - 6) * 8;
+		y -= (character.getLastUpdatedRegion().getY() - 6) * 8;
+	}
+
+	/**
+	 * Localizes the location
+	 * 
+	 * @param character
+	 */
+	public void delocalize(Character character) {
+		x += (character.getLastUpdatedRegion().getX() - 6) * 8;
+		y += (character.getLastUpdatedRegion().getY() - 6) * 8;
 	}
 	
 	/**

@@ -1,9 +1,12 @@
 package org.hannes.rs2.entity;
 
+import org.hannes.rs2.action.Action;
 import org.hannes.rs2.action.ActionQueue;
 import org.hannes.rs2.container.impl.Equipment;
 import org.hannes.rs2.container.impl.Inventory;
 import org.hannes.rs2.content.misc.MakeAction;
+import org.hannes.rs2.entity.sync.Animation;
+import org.hannes.rs2.entity.sync.ForcedMovement;
 import org.hannes.rs2.entity.sync.UpdateFlags.UpdateFlag;
 import org.hannes.rs2.net.Connection;
 import org.hannes.rs2.util.Animations;
@@ -60,11 +63,60 @@ public class Player extends Character {
 	 * The make action
 	 */
 	private MakeAction makeAction;
+	
+	/**
+	 * The character's forced movement
+	 */
+	private ForcedMovement forcedMovement;
 
 	public Player(int index, Connection connection) {
 		super(index);
 		this.connection = connection;
 		super.getUpdateFlags().flag(UpdateFlag.APPEARANCE);
+	}
+
+	public void move(ForcedMovement movement, Animation animation) {
+		this.forcedMovement = movement;
+		this.forcedMovement.getSource().localize(this);
+		this.forcedMovement.getDestination().localize(this);
+		
+		/*
+		 * Calculate the amount of ticks the movement will last
+		 */
+		int time = 1 + (movement.getSource().getX() - movement.getDestination().getX())
+				+ (movement.getSource().getY() - movement.getDestination().getY());
+		
+		/*
+		 * Play animation if necessary
+		 */
+		if (animation != null) {
+			setAnimation(animation);
+		}
+		
+		/*
+		 * Set the forced movement flag
+		 */
+		super.getUpdateFlags().flag(UpdateFlag.FORCE_WALK);
+		
+		/*
+		 * Add the action so that whenever the animation is finished
+		 * the player's location is updated
+		 */
+		actionQueue.clear();
+		actionQueue.offer(new Action(time, this) {
+			
+			@Override
+			public boolean doAction(Player player) throws Exception {
+				forcedMovement.getDestination().delocalize(Player.this);
+				player.setTeleportTarget(forcedMovement.getDestination());
+				return true;
+			}
+			
+		});
+	}
+
+	public void move(ForcedMovement movement) {
+		this.move(movement, null);
 	}
 
 	@Override
@@ -134,6 +186,14 @@ public class Player extends Character {
 
 	public void setMakeAction(MakeAction makeAction) {
 		this.makeAction = makeAction;
+	}
+
+	public ForcedMovement getForcedMovement() {
+		return forcedMovement;
+	}
+
+	public void setForcedMovement(ForcedMovement forcedMovement) {
+		this.forcedMovement = forcedMovement;
 	}
 
 }

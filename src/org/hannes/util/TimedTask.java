@@ -43,7 +43,7 @@ public abstract class TimedTask implements Task {
 		 */
 		if (timer == null) {
 			timer = new Timer(engine);
-			timer.clock();
+			// timer.clock();
 		}
 		/*
 		 * If the task is not 

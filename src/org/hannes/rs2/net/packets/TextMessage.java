@@ -14,6 +14,10 @@ public class TextMessage implements Serializable {
 		this.text = text;
 	}
 
+	public TextMessage(Object obj) {
+		this(obj.toString());
+	}
+
 	@Override
 	public Message serialize(Connection connection) {
 		return new MessageBuilder(253, MessageLength.VARIABLE_8_BIT).putString(text).build();

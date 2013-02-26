@@ -160,7 +160,7 @@ public class Herblore implements EventHandler<ItemOnItemEvent> {
 		private final Mixture mixture;
 
 		public HerbloreAction(Player player, Mixture mixture) {
-			super(player);
+			super(2, player);
 			this.mixture = mixture;
 		}
 

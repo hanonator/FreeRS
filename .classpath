@@ -4,5 +4,6 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
 	<classpathentry kind="lib" path="lib/netty-3.5.8.Final.jar"/>
 	<classpathentry kind="lib" path="lib/dom4j-2.0.0.jar"/>
+	<classpathentry kind="lib" path="lib/irclib.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

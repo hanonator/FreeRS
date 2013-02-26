@@ -9,10 +9,6 @@ import java.util.logging.Logger;
 
 import org.dom4j.Document;
 import org.dom4j.Element;
-import org.hannes.rs2.content.RegisterEventHandler;
-import org.hannes.rs2.content.SpawnEventHandler;
-import org.hannes.rs2.content.event.RegisterEvent;
-import org.hannes.rs2.content.event.SpawnEvent;
 
 /**
  * FIXME: I have absolutely no control over what handler is attempting to be cast to another.

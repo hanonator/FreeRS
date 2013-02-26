@@ -1,0 +1,51 @@
+package org.hannes.rs2.entity.sync;
+
+import org.hannes.rs2.util.Direction;
+import org.hannes.util.Location;
+
+public class ForcedMovement {
+
+	/**
+	 * The source location
+	 */
+	private final Location source;
+	
+	/**
+	 * The destination location
+	 */
+	private final Location destination;
+	
+	/**
+	 * The speed at which the player moves
+	 */
+	private final int speed;
+	
+	/**
+	 * The direction the character is facing
+	 */
+	private final Direction direction;
+
+	public ForcedMovement(Location source, Location destination, int speed, Direction direction) {
+		this.source = source;
+		this.destination = destination;
+		this.speed = speed;
+		this.direction = direction;
+	}
+
+	public Location getSource() {
+		return source;
+	}
+
+	public Location getDestination() {
+		return destination;
+	}
+
+	public int getSpeed() {
+		return speed;
+	}
+
+	public Direction getDirection() {
+		return direction;
+	}
+
+}

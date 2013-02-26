@@ -22,7 +22,11 @@ public abstract class MakeAction extends Action {
 	private int slot;
 
 	public MakeAction(Player player) {
-		super(player);
+		this(1, player);
+	}
+
+	public MakeAction(long time, Player player) {
+		super(time, player);
 	}
 
 	/**

@@ -6,9 +6,9 @@ import org.hannes.rs2.net.Connection;
 import org.hannes.rs2.net.ConnectionState;
 import org.hannes.rs2.net.Message;
 import org.hannes.rs2.net.codec.decoder.ButtonDecoder;
+import org.hannes.rs2.net.codec.decoder.ChannelTextDecoder;
 import org.hannes.rs2.net.codec.decoder.EquipmentDecoder;
-import org.hannes.rs2.net.codec.decoder.GlobalChatDecoder;
-import org.hannes.rs2.net.codec.decoder.ItemOnItemDecoder;
+import org.hannes.rs2.net.codec.decoder.ItemInteractionDecoder;
 import org.hannes.rs2.net.codec.decoder.MovementDecoder;
 import org.hannes.rs2.net.codec.decoder.ObjectInteractionDecoder;
 import org.hannes.rs2.net.codec.decoder.SilentDecoder;
@@ -43,16 +43,16 @@ public class Decoders {
 		decoders[241] = u;
 
 		/*
+		 * Misc
+		 */
+		decoders[ChannelTextDecoder.OPCODE] = new ChannelTextDecoder();
+		
+		/*
 		 * Equipment
 		 */
 		EquipmentDecoder equipment = new EquipmentDecoder();
 		decoders[EquipmentDecoder.OPCODE_ADD] = equipment;
 		decoders[EquipmentDecoder.OPCODE_REMOVE] = equipment;
-		
-		/*
-		 * Global chat encoder
-		 */
-		decoders[GlobalChatDecoder.OPCODE] = new GlobalChatDecoder();
 
 		/*
 		 * Movement decoder
@@ -76,9 +76,11 @@ public class Decoders {
 		decoders[ObjectInteractionDecoder.THIRD_OPTION] = object;
 	
 		/*
-		 * Item on item
+		 * Item interaction
 		 */
-		decoders[ItemOnItemDecoder.OPCODE] = new ItemOnItemDecoder();
+		ItemInteractionDecoder items = new ItemInteractionDecoder();
+		decoders[ItemInteractionDecoder.ITEM_ON_ITEM] = items;
+		decoders[ItemInteractionDecoder.ITEM_ON_OBJECT] = items;
 		
 		/*
 		 * User prompt

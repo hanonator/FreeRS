@@ -2,6 +2,7 @@
 	<!-- misc handlers -->
 	<handler class="org.hannes.rs2.content.event.SpawnEvent">org.hannes.rs2.content.SpawnEventHandler</handler>
 	<handler class="org.hannes.rs2.content.event.RegisterEvent">org.hannes.rs2.content.RegisterEventHandler</handler>
+	<handler class="org.hannes.rs2.content.event.ChannelTextEvent">org.hannes.rs2.content.channel.ChannelTextEventHandler</handler>
 	
 	<!-- make handlers -->
 	<handler class="org.hannes.rs2.content.event.UserValueEvent">org.hannes.rs2.content.misc.MakeXEventHandler</handler>
@@ -10,4 +11,8 @@
 	
 	<!-- skill event handlers -->
 	<handler class="org.hannes.rs2.content.event.ItemOnItemEvent">org.hannes.rs2.content.Herblore</handler>
+	<handler class="org.hannes.rs2.content.event.ItemOnObjectEvent">org.hannes.rs2.content.Cooking</handler>
+	<handler class="org.hannes.rs2.content.event.ObjectInteractionEvent">org.hannes.rs2.content.Agility</handler>
+	
+	
 </event-handlers>

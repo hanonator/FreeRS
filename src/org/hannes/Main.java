@@ -7,6 +7,7 @@ import java.util.logging.Logger;
 
 import org.dom4j.io.SAXReader;
 import org.hannes.rs2.World;
+import org.hannes.rs2.content.Cooking;
 import org.hannes.rs2.content.Herblore;
 import org.hannes.rs2.content.misc.MakeButtonEventHandler;
 import org.hannes.rs2.event.EventHub;
@@ -68,6 +69,7 @@ public class Main {
 		 * Initialize the content
 		 */
 		Herblore.initialize(reader.read("data/herblore.xml"));
+		Cooking.initialize(reader.read("data/cooking.xml"));
 		
 		/*
 		 * Create the server boostrap

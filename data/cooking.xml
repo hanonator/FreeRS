@@ -1,0 +1,86 @@
+<list>
+	<recipes>
+		<entry ingredient="317" >315</entry>
+		<entry ingredient="327" >325</entry>
+		<entry ingredient="321" >319</entry>
+		<entry ingredient="335" >333</entry>
+		<entry ingredient="341" >339</entry>
+		<entry ingredient="349" >351</entry>
+		<entry ingredient="331" >329</entry>
+		<entry ingredient="359" >361</entry>
+		<entry ingredient="377" >379</entry>
+		<entry ingredient="371" >373</entry>
+		<entry ingredient="383" >385</entry>
+	</recipes>
+	<stoves>
+		<entry name="Cooking range">114</entry>
+		<entry name="Range">2728</entry>
+		<entry name="Range">2729</entry>
+		<entry name="Range">2730</entry>
+		<entry name="Range">2731</entry>
+		<entry name="Cooking range">2859</entry>
+		<entry name="Range">3039</entry>
+		<entry name="Cooking range">4172</entry>
+		<entry name="Cooking range">5275</entry>
+		<entry name="Cooking range">8750</entry>
+		<entry name="Stove">9085</entry>
+		<entry name="Stove">9086</entry>
+		<entry name="Stove">9087</entry>
+		<entry name="Range">9682</entry>
+		<entry name="Range">12102</entry>
+		<entry name="Stove">12269</entry>
+		<entry name="Range">14919</entry>
+		<entry name="Cooking range">16893</entry>
+		<entry name="Range">21792</entry>
+		<entry name="Cooking range">22154</entry>
+		<entry name="Range">22713</entry>
+		<entry name="Range">22714</entry>
+		<entry name="Range">24283</entry>
+		<entry name="Range">24284</entry>
+		<entry name="Range">25730</entry>
+		<entry name="Range">33500</entry>
+		<entry name="Cooking range">34410</entry>
+		<entry name="Range">34495</entry>
+		<entry name="Range">34546</entry>
+		<entry name="Cooking range">34565</entry>
+		<entry name="Range">36973</entry>
+		<entry name="Range">37629</entry>
+		<entry name="Range">40110</entry>
+	</stoves>
+	<fires>
+		<entry name="Fire">2732</entry>
+		<entry name="Fire">3038</entry>
+		<entry name="Fire">3769</entry>
+		<entry name="Fire">3775</entry>
+		<entry name="Fire">4265</entry>
+		<entry name="Fire">4266</entry>
+		<entry name="Fire">4766</entry>
+		<entry name="Fire">5249</entry>
+		<entry name="Fire">5499</entry>
+		<entry name="Fire">5631</entry>
+		<entry name="Fire">5632</entry>
+		<entry name="Fire">5981</entry>
+		<entry name="Fire">10433</entry>
+		<entry name="Fire">11404</entry>
+		<entry name="Fire">11405</entry>
+		<entry name="Fire">11406</entry>
+		<entry name="Fire">12796</entry>
+		<entry name="Fire">13337</entry>
+		<entry name="Fire">13881</entry>
+		<entry name="Fire">14169</entry>
+		<entry name="Fire">15156</entry>
+		<entry name="Fire">20000</entry>
+		<entry name="Fire">20001</entry>
+		<entry name="Fire">21620</entry>
+		<entry name="Fire">23046</entry>
+		<entry name="Fire">25155</entry>
+		<entry name="Fire">25156</entry>
+		<entry name="Fire">25465</entry>
+		<entry name="Fire">27297</entry>
+		<entry name="Fire">29139</entry>
+		<entry name="Fire">30017</entry>
+		<entry name="Fire">32099</entry>
+		<entry name="Fire">37597</entry>
+		<entry name="Fire">37726</entry>
+	</fires>
+</list>

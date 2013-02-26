@@ -472,7 +472,7 @@ public class PlayerSync implements CharacterSync {
 			 * Append the appropriate updates.
 			 */
 			if (updateFlags.get(UpdateFlag.FORCE_WALK)) {
-				// TODO: Make this work
+				appendForceWalkUpdate(otherPlayer, block);
 			}
 			if (updateFlags.get(UpdateFlag.GRAPHICS)) {
 				appendGraphicUpdate(otherPlayer, block);
@@ -507,6 +507,17 @@ public class PlayerSync implements CharacterSync {
 			 */
 			packet.put(block.build());
 		}
+	}
+
+	private void appendForceWalkUpdate(Player otherPlayer, MessageBuilder block) {
+		ForcedMovement fm = otherPlayer.getForcedMovement();
+		block.put(fm.getSource().getX());
+		block.put(fm.getSource().getY());
+		block.put(fm.getDestination().getX());
+		block.put(fm.getDestination().getY());
+		block.putShort(0);
+		block.putShort(fm.getSpeed());
+		block.put(fm.getDirection().ordinal());
 	}
 
 	private void appendGraphicUpdate(Player player, MessageBuilder builder) {
