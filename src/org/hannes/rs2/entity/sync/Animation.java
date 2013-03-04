@@ -10,6 +10,11 @@ package org.hannes.rs2.entity.sync;
 public class Animation {
 
 	/**
+	 * The reset animation
+	 */
+	public static final Animation RESET = new Animation(65535);
+
+	/**
 	 * The id.
 	 */
 	private final int id;

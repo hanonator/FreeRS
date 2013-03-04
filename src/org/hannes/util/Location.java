@@ -71,9 +71,10 @@ public class Location {
 	 * 
 	 * @param character
 	 */
-	public void localize(Character character) {
+	public Location localize(Character character) {
 		x -= (character.getLastUpdatedRegion().getX() - 6) * 8;
 		y -= (character.getLastUpdatedRegion().getY() - 6) * 8;
+		return this;
 	}
 
 	/**
@@ -81,9 +82,10 @@ public class Location {
 	 * 
 	 * @param character
 	 */
-	public void delocalize(Character character) {
+	public Location delocalize(Character character) {
 		x += (character.getLastUpdatedRegion().getX() - 6) * 8;
 		y += (character.getLastUpdatedRegion().getY() - 6) * 8;
+		return this;
 	}
 	
 	/**
@@ -93,10 +95,11 @@ public class Location {
 	 * @param y
 	 * @param z
 	 */
-	public void transform(int x, int y, int z) {
+	public Location transform(int x, int y, int z) {
 		this.x += x;
 		this.y += y;
 		this.z += z;
+		return this;
 	}
 	
 	/**
@@ -104,10 +107,11 @@ public class Location {
 	 * 
 	 * @param location
 	 */
-	public void transform(Location location) {
+	public Location transform(Location location) {
 		this.x = location.x;
 		this.y = location.y;
 		this.z = location.z;
+		return this;
 	}
 	
 	/**
@@ -117,10 +121,11 @@ public class Location {
 	 * @param y
 	 * @param z
 	 */
-	public void relocate(int x, int y, int z) {
+	public Location relocate(int x, int y, int z) {
 		this.x = x;
 		this.y = y;
 		this.z = z;
+		return this;
 	}
 
 	public Location toRegion() {

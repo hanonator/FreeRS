@@ -1,5 +1,6 @@
 package org.hannes.rs2.content;
 
+import org.hannes.rs2.content.channel.ChannelManager;
 import org.hannes.rs2.content.event.SpawnEvent;
 import org.hannes.rs2.entity.Player;
 import org.hannes.rs2.event.EventHandler;
@@ -33,6 +34,17 @@ public class SpawnEventHandler implements EventHandler<SpawnEvent> {
 		 */
 		player.getInventory().refresh();
 		player.getConnection().write(SidebarInterface.INVENTORY);
+		
+		/*
+		 * Set misc sidebars
+		 */
+		player.getConnection().write(SidebarInterface.REGULAR_MAGIC);
+		player.getConnection().write(SidebarInterface.LOG_OUT);
+		
+		/*
+		 * Join the public channel
+		 */
+		ChannelManager.get("all").register(player);
 		
 		/*
 		 * Teleport the player to his spawn point

@@ -4,6 +4,7 @@ import org.hannes.rs2.entity.Player;
 import org.hannes.rs2.net.Connection;
 import org.hannes.rs2.net.Message;
 import org.hannes.rs2.net.codec.Decoder;
+import org.hannes.rs2.util.Cooldowns.Cooldown;
 import org.hannes.util.Location;
 
 /**
@@ -37,6 +38,10 @@ public class MovementDecoder implements Decoder {
 		 */
 		int size = message.getOpcode() == 248 ? message.size() - 14 : message.size();
 		
+		if (!player.getCooldowns().check(Cooldown.MOVEMENT)) {
+			return;
+		}
+		
 		/*
 		 * Clear the player's action queue n shit
 		 */
@@ -46,6 +51,13 @@ public class MovementDecoder implements Decoder {
 		 * Reset the player's walking queue
 		 */
 		player.getWalkingQueue().reset();
+		
+		/*
+		 * Reset the player's acquaintance
+		 */
+		if (player.getAcquaintance() != null) {
+			player.setAcquaintance(null);
+		}
 
 		/*
 		 * Make the player walk or run depending on the event

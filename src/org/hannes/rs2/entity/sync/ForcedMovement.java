@@ -16,19 +16,25 @@ public class ForcedMovement {
 	private final Location destination;
 	
 	/**
-	 * The speed at which the player moves
+	 * The primary velocity
 	 */
-	private final int speed;
+	private final int primaryVelocity;
+	
+	/**
+	 * The secondary velocity
+	 */
+	private final int secondaryVelocity;
 	
 	/**
 	 * The direction the character is facing
 	 */
 	private final Direction direction;
 
-	public ForcedMovement(Location source, Location destination, int speed, Direction direction) {
+	public ForcedMovement(Location source, Location destination, int primaryVelocity, int secondaryVelocity, Direction direction) {
 		this.source = source;
 		this.destination = destination;
-		this.speed = speed;
+		this.primaryVelocity = primaryVelocity;
+		this.secondaryVelocity = secondaryVelocity;
 		this.direction = direction;
 	}
 
@@ -40,12 +46,16 @@ public class ForcedMovement {
 		return destination;
 	}
 
-	public int getSpeed() {
-		return speed;
+	public int getSecondaryVelocity() {
+		return secondaryVelocity;
 	}
 
 	public Direction getDirection() {
 		return direction;
+	}
+
+	public int getPrimaryVelocity() {
+		return primaryVelocity;
 	}
 
 }

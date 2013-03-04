@@ -10,6 +10,7 @@ import org.hannes.rs2.net.codec.decoder.ChannelTextDecoder;
 import org.hannes.rs2.net.codec.decoder.EquipmentDecoder;
 import org.hannes.rs2.net.codec.decoder.ItemInteractionDecoder;
 import org.hannes.rs2.net.codec.decoder.MovementDecoder;
+import org.hannes.rs2.net.codec.decoder.NPCInteractionDecoder;
 import org.hannes.rs2.net.codec.decoder.ObjectInteractionDecoder;
 import org.hannes.rs2.net.codec.decoder.SilentDecoder;
 import org.hannes.rs2.net.codec.decoder.UserValueDecoder;
@@ -41,6 +42,16 @@ public class Decoders {
 		decoders[77] = u;
 		decoders[121] = u;
 		decoders[241] = u;
+		
+		/*
+		 * NPC Interaction
+		 */
+		NPCInteractionDecoder npc = new NPCInteractionDecoder();
+		decoders[NPCInteractionDecoder.ATTACK] = npc;
+		decoders[NPCInteractionDecoder.MAGIC] = npc;
+		decoders[NPCInteractionDecoder.FIRST_OPTION] = npc;
+		decoders[NPCInteractionDecoder.SECOND_OPTION] = npc;
+		decoders[NPCInteractionDecoder.THIRD_OPTION] = npc;
 
 		/*
 		 * Misc

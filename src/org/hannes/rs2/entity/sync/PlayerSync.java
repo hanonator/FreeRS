@@ -515,8 +515,8 @@ public class PlayerSync implements CharacterSync {
 		block.put(fm.getSource().getY());
 		block.put(fm.getDestination().getX());
 		block.put(fm.getDestination().getY());
-		block.putShort(0);
-		block.putShort(fm.getSpeed());
+		block.putShort(fm.getPrimaryVelocity());
+		block.putShort(fm.getSecondaryVelocity());
 		block.put(fm.getDirection().ordinal());
 	}
 

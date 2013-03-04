@@ -13,6 +13,6 @@
 	<handler class="org.hannes.rs2.content.event.ItemOnItemEvent">org.hannes.rs2.content.Herblore</handler>
 	<handler class="org.hannes.rs2.content.event.ItemOnObjectEvent">org.hannes.rs2.content.Cooking</handler>
 	<handler class="org.hannes.rs2.content.event.ObjectInteractionEvent">org.hannes.rs2.content.Agility</handler>
-	
+	<handler class="org.hannes.rs2.content.event.NPCInteractionEvent">org.hannes.rs2.content.Fishing</handler>
 	
 </event-handlers>

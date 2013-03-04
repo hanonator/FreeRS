@@ -107,6 +107,10 @@ public class World {
 		npcs.add(npc);
 	}
 
+	public NPC getNpc(int index) {
+		return npcs.get(index);
+	}
+
 	/**
 	 * Initializes the wandering NPC spawns
 	 * 

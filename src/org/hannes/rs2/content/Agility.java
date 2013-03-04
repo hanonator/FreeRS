@@ -1,13 +1,12 @@
 package org.hannes.rs2.content;
 
-import org.hannes.rs2.action.Action;
 import org.hannes.rs2.content.event.ObjectInteractionEvent;
 import org.hannes.rs2.entity.Player;
 import org.hannes.rs2.entity.sync.Animation;
 import org.hannes.rs2.entity.sync.ForcedMovement;
-import org.hannes.rs2.entity.sync.UpdateFlags.UpdateFlag;
 import org.hannes.rs2.event.EventHandler;
 import org.hannes.rs2.util.Direction;
+import org.hannes.rs2.util.Cooldowns.Cooldown;
 import org.hannes.util.Location;
 
 /**
@@ -25,75 +24,42 @@ public class Agility implements EventHandler<ObjectInteractionEvent> {
 
 	@Override
 	public void handleEvent(ObjectInteractionEvent event) throws Exception {
+		// TODO: Check if object exists
 		final Player player = event.getPlayer();
+		
+		/*
+		 * Agility is affected by mobility cooldowns
+		 */
+		if (!player.getCooldowns().check(Cooldown.MOVEMENT)) {
+			return;
+		}
 		
 		switch (event.getId()) {
 		case STEPPING_STONE_ID:
-			// TODO: Check if object exists
-			
 			/*
-			 * Get the source location
+			 * Don't do anything if the player is already standing on the
+			 * stepping stone
 			 */
-			int src_x, src_y = event.getLocation().getY();
-			int x = event.getPlayer().getLocation().getX();
-			if (x > event.getLocation().getX()) {
-				src_x = event.getLocation().getX() + 1;
-			} else if (x < event.getLocation().getX()) {
-				src_x = event.getLocation().getX() - 1;
-			} else {
+			if (player.getLocation().equals(event.getLocation())) {
 				return;
 			}
 			
 			/*
-			 * Rotate the player to face where he's going
+			 * Get both the source and destination locations
 			 */
-			event.getPlayer().setViewLocation(event.getLocation());
+			Location source = new Location(event.getLocation());
+			Location destination = new Location(event.getLocation());
+			source.transform(player.getLocation().getX() > destination.getX() ? 1 : -1, 0, 0);
+			
+			/*
+			 * Turn the player towards the stone
+			 */
+			player.setViewLocation(destination);
 			
 			/*
 			 * Move the player
 			 */
-			player.setAnimation(new Animation(769));
-			
-			/*
-			 * Create the locations
-			 */
-			final Location source = new Location(src_x, src_y);
-			final Location destination = new Location(event.getLocation());
-			
-			
-			/*
-			 * Add the action
-			 */
-			event.getPlayer().getActionQueue().offer(new Action(event.getPlayer()) {
-
-				private boolean flag;
-				
-				@Override
-				public boolean doAction(Player player) throws Exception {
-					if (flag) {
-						destination.delocalize(player);
-						player.setTeleportTarget(destination);
-						return true;
-					} else {
-						source.localize(player);
-						destination.localize(player);
-						
-						/*
-						 * Create the forced movement object
-						 */
-						player.setForcedMovement(new ForcedMovement(
-								source, destination, 10, Direction.EAST));
-						
-						/*
-						 * Set the forced movement flag
-						 */
-						player.getUpdateFlags().flag(UpdateFlag.FORCE_WALK);
-						flag = true;
-						return false;
-					}
-				}
-				
-			});
+			player.move(new ForcedMovement(source, destination, 20, 40, source.getX() < destination.getX() ? Direction.NORTH : Direction.WEST), new Animation(769));
 			break;
 		}
 	}
